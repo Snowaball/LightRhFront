@@ -1,1 +1,20 @@
-<p>calendrier works!</p>
+<div class="calendrier">
+    <div class="entete">
+      <button (click)="moisPrecedent()">Mois précédent</button>
+      <h2>{{ mois.format('MMMM YYYY') }}</h2>
+      <button (click)="moisSuivant()">Mois suivant</button>
+    </div>
+    <div class="semaines">
+      <div class="jour-semaine" *ngFor="let jour of ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim']">
+        {{ jour }}
+      </div>
+      <div *ngFor="let semaine of semaines" class="semaine">
+        <div *ngFor="let jour of semaine" class="jour">
+          <span *ngIf="jour.isSame(mois, 'month')" class="jour-mois">{{ jour.date() }}</span>
+          <span *ngIf="!jour.isSame(mois, 'month')" class="jour-autre-mois"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
