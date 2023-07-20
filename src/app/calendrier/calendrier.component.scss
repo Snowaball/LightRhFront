@@ -1,5 +1,5 @@
 .calendrier {
-  width: 300px;
+  width: 260px;
   margin: 0 auto;
 }
 
@@ -13,7 +13,7 @@
 .semaines {
   display: flex;
   flex-direction: column;
-  position: relative
+  justify-content: auto;
 }
 
 .container{
@@ -25,23 +25,35 @@
   flex: 1;
   text-align: center;
   border: solid 1px;
-
+  width: 35px;
+  
 }
 
 .semaine {
   display: flex;
   margin-bottom: 5px;
-  justify-content: space-between;
+  justify-content: auto;
+  background-color: red;
 }
 
 .jour {
   flex: 1;
   text-align: center;
   border: solid 1px;
+  max-width: 35px;
+
+  margin: 0;
+  padding: 0;
 }
 
 .jour-mois {
   color: #000;
+  min-width: 100%;
+  width: 35px;
+  height: 35px;
+  margin: 0;
+  padding: 0;
+  // border: solid 1px;
 }
 
 .jour-autre-mois {
