@@ -1,14 +1,49 @@
+.calendrier {
+  width: 300px;
+  margin: 0 auto;
+}
+
+.entete {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.semaines {
+  display: flex;
+  flex-direction: column;
+  position: relative
+}
+
+.container{
+  display: flex;
+  justify-content: space-between;
+}
+
 .jour-semaine {
-    font-weight: bold;
-    text-align: center;
-    display: inline-block;
-  }
-  
-  .jour {
-    text-align: center;
-    margin-bottom: 10px;
-    border: solid 1px;
-    width: 25px;
-    display: inline-block;
-  }
-  
+  flex: 1;
+  text-align: center;
+  border: solid 1px;
+
+}
+
+.semaine {
+  display: flex;
+  margin-bottom: 5px;
+  justify-content: space-between;
+}
+
+.jour {
+  flex: 1;
+  text-align: center;
+  border: solid 1px;
+}
+
+.jour-mois {
+  color: #000;
+}
+
+.jour-autre-mois {
+  color: #999;
+}

@@ -5,12 +5,17 @@
       <button (click)="moisSuivant()">Mois suivant</button>
     </div>
     <div class="semaines">
-      <div class="jour-semaine" *ngFor="let jour of ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim']">
-        {{ jour }}
+
+      <div class="container">
+        <div class="jour-semaine" *ngFor="let libelleJour of ['L', 'M', 'M', 'J', 'V', 'S', 'D']">
+          {{ libelleJour }}
+        </div>
       </div>
+
       <div *ngFor="let semaine of semaines" class="semaine">
         <div *ngFor="let jour of semaine" class="jour">
           <span *ngIf="jour.isSame(mois, 'month')" class="jour-mois">{{ jour.date() }}</span>
+          <!-- Si le jour n'est pas pareil qu'un autre jour, alors on passe sur un autre mois -->
           <span *ngIf="!jour.isSame(mois, 'month')" class="jour-autre-mois"></span>
         </div>
       </div>
