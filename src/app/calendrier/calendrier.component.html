@@ -7,24 +7,22 @@
   <div class="semaines">
 
     <div class="container">
-      <div class="jour-semaine" *ngFor="let libelleJour of ['L', 'M', 'M', 'J', 'V', 'S', 'D']">
+      <div class="jour-semaine" *ngFor="let libelleJour of joursSemaineLabels">
         {{ libelleJour }}
       </div>
     </div>
 
     <div *ngFor="let semaine of semaines" class="semaine">
       <div *ngFor="let jour of semaine" class="jour">
-
-          <button *ngIf="jour.isSame(mois, 'month')" class="jour-mois">
+        <ng-container *ngIf="jour">
+          <button class="jour-mois" *ngIf="jour.isSame(mois, 'month')">
             {{ jour.date() }}
           </button>
-
-        <!-- Si le jour n'est pas pareil qu'un autre jour, alors on passe sur un autre mois -->
-        <span *ngIf="!jour.isSame(mois, 'month')" class="jour-autre-mois"></span>
+          <span class="jour-autre-mois" *ngIf="!jour.isSame(mois, 'month')">
+            {{ jour.date() }}
+          </span>
+        </ng-container>
       </div>
-      
     </div>
-
-    
   </div>
 </div>

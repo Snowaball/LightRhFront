@@ -33,7 +33,7 @@
   display: flex;
   margin-bottom: 5px;
   justify-content: auto;
-  background-color: red;
+
 }
 
 .jour {
@@ -58,4 +58,5 @@
 
 .jour-autre-mois {
   color: #999;
+  display: none;
 }
