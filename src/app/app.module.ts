@@ -13,6 +13,7 @@ import { ModifierAbsenceComponent } from './modifier-absence/modifier-absence.co
 import { HistogrammeComponent } from './histogramme/histogramme.component';
 import { FormsModule } from '@angular/forms';
 import { CreationCompteComponent } from './creation-compte/creation-compte.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,13 +25,14 @@ import { CreationCompteComponent } from './creation-compte/creation-compte.compo
     ValiderAbsenceComponent,
     ModifierAbsenceComponent,
     HistogrammeComponent,
-    CreationCompteComponent
+    CreationCompteComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule,
     AppRoutingModule,
     FormsModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent,]
