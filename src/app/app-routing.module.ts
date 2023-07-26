@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AccueilComponent } from './accueil/accueil.component';
+import { ConnexionComponent } from './connexion/connexion.component';
 
 const routes: Routes = [
-  { path: '', component: AccueilComponent },
+  { path: '', component: ConnexionComponent },
   // Ajoutez d'autres routes ici si nécessaire
 ];
 
@@ -11,4 +11,6 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule { 
+
+}
