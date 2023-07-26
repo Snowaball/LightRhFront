@@ -11,8 +11,17 @@ import { CreationAbsenceComponent } from './creation-absence/creation-absence.co
 import { ValiderAbsenceComponent } from './valider-absence/valider-absence.component';
 import { ModifierAbsenceComponent } from './modifier-absence/modifier-absence.component';
 import { HistogrammeComponent } from './histogramme/histogramme.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreationCompteComponent } from './creation-compte/creation-compte.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,13 +33,23 @@ import { CreationCompteComponent } from './creation-compte/creation-compte.compo
     ValiderAbsenceComponent,
     ModifierAbsenceComponent,
     HistogrammeComponent,
-    CreationCompteComponent
+    CreationCompteComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule,
     AppRoutingModule,
     FormsModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatCheckboxModule,
+    MatSelectModule,
+    MatMenuModule,
+    MatIconModule,
+    ReactiveFormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent,]
