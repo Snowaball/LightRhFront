@@ -11,6 +11,9 @@ import { CreationAbsenceComponent } from './creation-absence/creation-absence.co
 import { ValiderAbsenceComponent } from './valider-absence/valider-absence.component';
 import { ModifierAbsenceComponent } from './modifier-absence/modifier-absence.component';
 import { HistogrammeComponent } from './histogramme/histogramme.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ApiService } from './api/api.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,9 +29,13 @@ import { HistogrammeComponent } from './histogramme/histogramme.component';
   imports: [
     BrowserModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    ApiService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

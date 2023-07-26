@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CreationAbsenceComponent } from './creation-absence.component';
 
-describe('CreationAbsenceComponent', () => {
+describe('ModifierAbsenceComponent', () => {
   let component: CreationAbsenceComponent;
   let fixture: ComponentFixture<CreationAbsenceComponent>;
 
