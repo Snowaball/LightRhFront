@@ -1,0 +1,62 @@
+.calendrier {
+  width: 260px;
+  margin: 0 auto;
+}
+
+.entete {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.semaines {
+  display: flex;
+  flex-direction: column;
+  justify-content: auto;
+}
+
+.container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.jour-semaine {
+  flex: 1;
+  text-align: center;
+  border: solid 1px;
+  width: 35px;
+  
+}
+
+.semaine {
+  display: flex;
+  margin-bottom: 5px;
+  justify-content: auto;
+
+}
+
+.jour {
+  flex: 1;
+  text-align: center;
+  border: solid 1px;
+  max-width: 35px;
+
+  margin: 0;
+  padding: 0;
+}
+
+.jour-mois {
+  color: #000;
+  min-width: 100%;
+  width: 35px;
+  height: 35px;
+  margin: 0;
+  padding: 0;
+  // border: solid 1px;
+}
+
+.jour-autre-mois {
+  color: #999;
+  display: none;
+}
