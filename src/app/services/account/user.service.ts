@@ -10,6 +10,12 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
+
+  // getEmployees() {
+  //   return this.http.get<Employee[]>('http://localhost:8080/employee/admin/getEmployee');
+  // }
+
+
   createUser(userData: any): Observable<any> {
     return this.http.post<any>(this.apiUrl, userData);
   }
