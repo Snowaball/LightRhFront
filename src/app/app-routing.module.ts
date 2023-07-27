@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CreationAbsenceComponent } from './creation-absence/creation-absence.component';
-import { ConnexionComponent } from './connexion/connexion.component';
+import { CreationAbsenceComponent } from './components/creation-absence/creation-absence.component';
+import { ConnexionComponent } from './components/connexion/connexion.component';
 
 const routes: Routes = [
   { path: '', component: ConnexionComponent },

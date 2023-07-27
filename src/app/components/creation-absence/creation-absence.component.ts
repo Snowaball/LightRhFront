@@ -1,7 +1,7 @@
 // creation-absence.component.ts
 import { Component } from '@angular/core';
-import { AbsenceCreateDto } from '../model/absenceCreateDto';
-import { ApiService } from '../api/api.service';
+import { AbsenceCreateDto } from '../../model/absenceCreateDto';
+import { AbsenceService } from 'src/app/services/absence.service';
 
 @Component({
   selector: 'app-creation-absence',
@@ -19,10 +19,10 @@ export class CreationAbsenceComponent {
   };
   absence: AbsenceCreateDto= this.absenceInitial;
 
-  constructor(private apiService: ApiService) {}
+  constructor(private absenceService: AbsenceService) {}
 
   onSubmitForm() {
-    this.apiService.addAbsence(this.absence).subscribe(
+    this.absenceService.addAbsence(this.absence).subscribe(
       () => {
         console.log('Absence ajoutée avec succès.');
         this.absence = this.absenceInitial;

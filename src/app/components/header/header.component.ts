@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { UserInfo } from '../models/user-info';
+import { UserInfo } from '../../model/user-info';
 
 @Component({
   selector: 'app-header',
