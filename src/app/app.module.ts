@@ -23,6 +23,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { BackgroundComponent } from './shared/background/background/background.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     ModifierAbsenceComponent,
     HistogrammeComponent,
     CreationCompteComponent,
+    BackgroundComponent,
   ],
   imports: [
     BrowserModule,
