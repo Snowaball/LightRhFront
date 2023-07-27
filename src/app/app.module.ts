@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import { AccueilComponent } from './accueil/accueil.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CalendrierComponent } from './calendrier/calendrier.component';
 import { ConnexionComponent } from './connexion/connexion.component';
@@ -14,18 +13,14 @@ import { HistogrammeComponent } from './histogramme/histogramme.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreationCompteComponent } from './creation-compte/creation-compte.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatSelectModule } from '@angular/material/select';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatIconModule } from '@angular/material/icon';
-
+import { HeaderComponent } from './header/header.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatButtonModule} from '@angular/material/button';
+import { HttpClientModule } from '@angular/common/http';
+import { ApiService } from './api/api.service';
 @NgModule({
   declarations: [
     AppComponent,
-    AccueilComponent,
     CalendrierComponent,
     ConnexionComponent,
     PremiereConnexionComponent,
@@ -34,6 +29,7 @@ import { MatIconModule } from '@angular/material/icon';
     ModifierAbsenceComponent,
     HistogrammeComponent,
     CreationCompteComponent,
+    HeaderComponent,   
   ],
   imports: [
     BrowserModule,
@@ -41,17 +37,7 @@ import { MatIconModule } from '@angular/material/icon';
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatButtonModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatCheckboxModule,
-    MatSelectModule,
-    MatMenuModule,
-    MatIconModule,
-    ReactiveFormsModule
-
   ],
-  providers: [],
-  bootstrap: [AppComponent,]
+  bootstrap : [AppComponent]
 })
 export class AppModule { }
