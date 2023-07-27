@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../services/account/user.service';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { Employee } from '../models/Employee';
 
 @Component({
   selector: 'app-creation-compte',
@@ -12,20 +13,20 @@ import { of } from 'rxjs';
 export class CreationCompteComponent {
   formData: any = {};
   myForm!: FormGroup;
-  // employees: Employee[] = [];
+  employees: Employee[] = [];
 
   constructor(private userService: UserService ,private formBuilder: FormBuilder) {}
 
   ngOnInit() {
 
-    // this.userService.getEmployees()
-    // .pipe(
-    //   catchError(error => {
-    //     console.log('Error fetching employees', error);
-    //     return of([]); 
-    //   })
-    // )
-    // .subscribe(employees => this.employees = employees);
+    this.userService.getEmployees()
+    .pipe(
+      catchError(error => {
+        console.log('Error fetching employees', error);
+        return of([]); 
+      })
+    )
+    .subscribe(employees => this.employees = employees);
 
     this.myForm = this.formBuilder.group({
       id: ['', Validators.required],
