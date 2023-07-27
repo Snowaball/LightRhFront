@@ -1,6 +1,6 @@
 // creation-absence.component.ts
 import { Component } from '@angular/core';
-import { AbsenceCreateDto } from '../../model/absenceCreateDto';
+import { AbsenceCreateDto } from '../../models/absenceCreateDto';
 import { AbsenceService } from 'src/app/services/absence.service';
 
 @Component({

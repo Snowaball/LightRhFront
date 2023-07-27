@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AbsenceCreateDto } from '../model/absenceCreateDto';
+import { AbsenceCreateDto } from '../models/absenceCreateDto';
 
 @Injectable({
   providedIn: 'root'

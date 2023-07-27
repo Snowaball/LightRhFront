@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { UserInfo } from '../../model/user-info';
+import { Observable, map, of } from 'rxjs';
+import { UserInfo } from '../../models/user-info';
+import { UserInfosService } from 'src/app/services/user-infos.service';
 
 @Component({
   selector: 'app-header',
@@ -8,14 +9,11 @@ import { UserInfo } from '../../model/user-info';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  userInfos$ : Observable<UserInfo>;
+  userInfos? : UserInfo;
 
-  constructor(){
-    this.userInfos$ = of({
-      firstName : "",
-      lastName : "",
-      role : "",
-      profile : ""
-    });
+  constructor(private userInfosService : UserInfosService){
+    userInfosService.userInfos$.pipe(
+      map(userInfo => this.userInfos = userInfo)
+    ).subscribe();
   }
 }
