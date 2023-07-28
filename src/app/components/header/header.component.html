@@ -6,7 +6,7 @@
         <button mat-button [matMenuTriggerFor]="absences">Absences</button>
         <mat-menu #absences="matMenu">
             <button mat-menu-item (click)='redirectTo("absences_view")'>Voir mes absences</button>
-            <button mat-menu-item >Demander une absence</button>
+            <button mat-menu-item (click)='redirectTo("creation_absence")'>Demander une absence</button>
         </mat-menu>
         <button mat-button [matMenuTriggerFor]="manager" *ngIf='userInfos?.profile=="MANAGER"'>Manager</button>
         <mat-menu #manager="matMenu">
@@ -16,7 +16,7 @@
         </mat-menu>
         <button mat-button [matMenuTriggerFor]="admin" *ngIf='userInfos?.role=="ADMIN"'>Admin</button>
         <mat-menu #admin="matMenu">
-            <button mat-menu-item (click)='redirectTo("creation_absence")'>Créer un employé</button>
+            <button mat-menu-item (click)='redirectTo("creation_compte")'>Créer un employé</button>
             <button mat-menu-item>Administrer les RTT employeur</button>
             <button mat-menu-item>Administrer les jours fériés</button>
         </mat-menu>

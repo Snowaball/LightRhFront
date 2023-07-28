@@ -5,6 +5,9 @@ import { ConnexionComponent } from './components/connexion/connexion.component';
 import { PasswordResetComponent } from './components/password-reset/password-reset.component';
 import { CalendrierComponent } from './components/calendrier/calendrier.component';
 import { isAuthGuard } from './services/guards/is-auth.guard';
+import { AbsenceViewerComponent } from './components/absence-viewer/absence-viewer.component';
+import { CreationCompteComponent } from './components/creation-compte/creation-compte.component';
+import { isAdminGuard } from './services/guards/is-admin.guard';
 
 const routes: Routes = [
   //routes relatives au login
@@ -19,7 +22,7 @@ const routes: Routes = [
 
 
   //Routes pour la gestion de soi même
-  { path : 'absences_view', component : CalendrierComponent, canActivate : [isAuthGuard] },
+  { path : 'absences_view', component : AbsenceViewerComponent, canActivate : [isAuthGuard] },
   // --liste par ordre chrono jours de congés + rtt employeur + jours fériés + 
   //manque modifier une demande 
   //manque supprimer une demande
@@ -30,7 +33,8 @@ const routes: Routes = [
   //Manque visualisation de mon département en vue par jour
   //Manque histogramme de mon département en vue par jour
 
-
+  //Routes pour les admin
+  { path: 'creation_compte', component: CreationCompteComponent, canActivate : [isAdminGuard] },
 ];
 
 @NgModule({

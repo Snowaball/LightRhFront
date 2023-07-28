@@ -22,6 +22,8 @@ export class AppComponent {
     switch(url){
       case("/calendar") : return "Calendrier";
       case("/absences_view") : return "Liste de mes absences";
+      case("/creation_absence") : return "Demander une absence";
+      case("/creation_compte") : return "Créer un employé";      
       default : return "Connexion";
     }
   }

@@ -47,9 +47,11 @@ export class CalendrierComponent {
     this.adapter.setLocale(moment.locale('fr'));
     this.employeeService.getAbsences().pipe(
       tap((absences:Array<Absence>)=> {
-        this.absences = absences;
-        this.highlightedDays = this.daysToHiglight(absences);
-        this.calendar?.updateTodaysDate();
+        if(absences){
+          this.absences = absences;
+          this.highlightedDays = this.daysToHiglight(absences);
+          this.calendar?.updateTodaysDate();
+        }
       })
     ).subscribe();
   }

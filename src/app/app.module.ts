@@ -24,6 +24,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatCardModule} from '@angular/material/card';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { ErrorHttpInterceptor } from './shared/interceptors/error-http-interceptor';
+import { AbsenceViewerComponent } from './components/absence-viewer/absence-viewer.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { ErrorHttpInterceptor } from './shared/interceptors/error-http-intercept
     HistogrammeComponent,
     CreationCompteComponent,
     HeaderComponent,
-    PasswordResetComponent,  
+    PasswordResetComponent,
+    AbsenceViewerComponent,  
   ],
   imports: [
     BrowserModule,
