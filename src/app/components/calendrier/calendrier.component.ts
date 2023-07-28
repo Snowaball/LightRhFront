@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { DateAdapter } from '@angular/material/core';
-import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
+import { MatCalendar, MatCalendarCellClassFunction } from '@angular/material/datepicker';
 import * as moment from 'moment';
 import { Observable, of, tap } from 'rxjs';
 import { Absence } from 'src/app/models/absence.model';
@@ -13,20 +13,32 @@ import { EmployeeService } from 'src/app/services/employee.service';
   styleUrls: ['./calendrier.component.scss']
 })
 export class CalendrierComponent {
+  @ViewChild(MatCalendar) calendar?: MatCalendar<Date>;
 
   absences : Array<Absence> = new Array<Absence>;
-  highlightedDays : Map<moment.Moment,string> = new Map<moment.Moment,string>;
+  highlightedDays : Array<HighlightedDay> = new Array<HighlightedDay>;
   dateClass : MatCalendarCellClassFunction<moment.Moment> = (cellDate, view) => {
     if(view == "month"){
       if(cellDate.day()==0 || cellDate.day()==6)
         return 'cellHighlight-weekend';
-       
-        
-      const possibleHighlightedDay : HighlightedDay= {
-        moment : cellDate,
-        type : ""
+        let type = "";
+      if(this.highlightedDays.some((hDay )=>{
+        if(hDay.moment>=cellDate && hDay.moment<cellDate.clone().add(1,'days')){
+          type = hDay.type;
+          return true;
+        }
+        return false;
+      })){
+        switch(type){
+          case("EMPLOYE_RTT"):return 'cellHighlight-conge-perso';
+          case("EMPLOYER_RTT"):return 'cellHighlight-conge-force';
+          case("HOLIDAY"):return 'cellHighlight-conge-force';
+          case("PAID_LEAVE"):return 'cellHighlight-conge-perso';
+          case("UNPAID_LEAVE"):return 'cellHighlight-conge-perso';
+          default:return 'cellHighlight-basic';
+        }        
       }
-        return 'cellHighlight-conge-perso';
+      return 'cellHighlight-basic';
     }
     return 'cellHighlight-basic';
   };
@@ -37,22 +49,27 @@ export class CalendrierComponent {
       tap((absences:Array<Absence>)=> {
         this.absences = absences;
         this.highlightedDays = this.daysToHiglight(absences);
+        this.calendar?.updateTodaysDate();
       })
     ).subscribe();
   }
 
-  private daysToHiglight(absences : Array<Absence>):Map<moment.Moment,string>{
-    let highlightedDays = new Map<moment.Moment,string>();
-    console.log(absences);
+  private daysToHiglight(absences : Array<Absence>):Array<HighlightedDay>{
+    let highlightedDays = new Array<HighlightedDay>();
     absences.forEach(absence => {
-      /*if(absence.Stat)*/
-      let dateStart = moment(absence.dateStart);
-      let dateEnd = moment(absence.dateEnd);
-      let int = dateStart.diff(dateEnd, 'days', true)+1
-      console.log(int);
+      if(absence.status == "VALIDEE"){
+        let dateStart = moment(absence.dateStart);
+        let dateEnd = moment(absence.dateEnd);
+        let numberOfDays = dateEnd.diff(dateStart, 'days')+1
+        for(let i=0;i<numberOfDays;i++){
+          let highlightedDay : HighlightedDay = {
+            moment : dateStart.clone().add(i,'days'),
+            type : absence.type
+          }
+          highlightedDays.push(highlightedDay);
+        }
+      }
     });
-
-
-    return new Map<moment.Moment,string>;
+    return highlightedDays;
   }
 }
