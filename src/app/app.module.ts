@@ -20,7 +20,6 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AbsenceService } from './services/absence.service';
 import { PasswordResetComponent } from './components/password-reset/password-reset.component';
 import {MatMenuModule} from '@angular/material/menu';
-import {Injectable } from '@angular/core';
 import { ErrorHttpInterceptor } from './shared/interceptors/error-http-interceptor';
 @NgModule({
   declarations: [
