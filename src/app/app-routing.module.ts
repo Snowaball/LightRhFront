@@ -1,14 +1,47 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AccueilComponent } from './accueil/accueil.component';
+import { CreationAbsenceComponent } from './components/creation-absence/creation-absence.component';
+import { ConnexionComponent } from './components/connexion/connexion.component';
+import { PasswordResetComponent } from './components/password-reset/password-reset.component';
+import { CalendrierComponent } from './components/calendrier/calendrier.component';
+import { isAuthGuard } from './services/guards/is-auth.guard';
+import { CreationCompteComponent } from './components/creation-compte/creation-compte.component';
+import { isAdminGuard } from './services/guards/is-admin.guard';
 
 const routes: Routes = [
-  { path: '', component: AccueilComponent },
-  // Ajoutez d'autres routes ici si nécessaire
+  //routes relatives au login
+  { path: '', component: ConnexionComponent },
+  { path : 'password_reset', component : PasswordResetComponent },
+  
+  //route d'accueil quand connecté 
+  { path : 'calendar', component : CalendrierComponent, canActivate : [isAuthGuard] },
+  //manque la visualisation des jours si congé / rtt / rtt employeur / jour férié avec couleur diff entre demande perso et congé imposé
+  //manque l'affichage des compteurs congés payés + rtt
+  //manque changer d'année 
+
+
+  //Routes pour la gestion de soi même
+  //Manque visualisation de mes congés 
+  // --liste par ordre chrono jours de congés + rtt employeur + jours fériés + 
+  //manque modifier une demande 
+  //manque supprimer une demande
+
+  { path: 'creation_absence', component: CreationAbsenceComponent, canActivate : [isAuthGuard] },
+  
+  //Routes pour les managers
+  //Manque visualisation de mon département en vue par jour
+  //Manque histogramme de mon département en vue par jour
+
+  //Route pour les admins
+  { path: 'create_employee', component: CreationCompteComponent, canActivate : [isAdminGuard] },
+
+
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule { 
+
+}
