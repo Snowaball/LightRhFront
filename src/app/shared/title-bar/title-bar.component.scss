@@ -1,0 +1,28 @@
+// .title-line {
+//     margin-bottom: 5%;
+//     width: 50%;
+//     border: none;
+//     border-top: 1px solid black;
+//     align-self: center;   /* Centrer la ligne horizontalement dans le conteneur flex */
+// }
+:host {
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+  
+  .title-bar {
+    width: 85%;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .title-bar hr {
+    width: 100%;
+    border: 0;
+    border-top: 1px solid black;
+  }
+  
+  
+  

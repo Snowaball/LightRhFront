@@ -24,6 +24,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BackgroundComponent } from './shared/background/background/background.component';
+import { TitleBarComponent } from './shared/title-bar/title-bar.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { BackgroundComponent } from './shared/background/background/background.c
     HistogrammeComponent,
     CreationCompteComponent,
     BackgroundComponent,
+    TitleBarComponent,
   ],
   imports: [
     BrowserModule,
