@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
+import { DateAdapter } from '@angular/material/core';
+import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 import * as moment from 'moment';
+import { Observable, of, tap } from 'rxjs';
+import { Absence } from 'src/app/models/absence.model';
+import { HighlightedDay } from 'src/app/models/highlighted-day';
+import { EmployeeService } from 'src/app/services/employee.service';
 
 @Component({
   selector: 'app-calendrier',
@@ -7,60 +13,46 @@ import * as moment from 'moment';
   styleUrls: ['./calendrier.component.scss']
 })
 export class CalendrierComponent {
-  mois: moment.Moment;
-  semaines: moment.Moment[][] = [];
-  joursSemaineLabels: string[] = [];
 
-  constructor() {
-    this.mois = moment();
-    this.joursSemaineLabels = this.getJoursSemaineLabels();
-    this.genererCalendrier();
-  }
-
-  getJoursSemaineLabels(): string[] {
-    // Utilisez un tableau pour définir l'ordre souhaité des jours de la semaine
-    const ordreJoursSemaine = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
-    const joursLabels = moment.weekdaysMin(); // Utilise les libellés courts des jours de la semaine (Lun, Mar, Mer, ...)
-    const premierJourSemaineIndex = moment().startOf('week').day(); // Index du premier jour de la semaine (0 pour Dimanche, 1 pour Lundi, ...)
-    const joursAvantPremierJourSemaine = joursLabels.splice(0, premierJourSemaineIndex); // Retirer les jours avant le premier jour de la semaine
-    return ordreJoursSemaine;
-  }
-
-  genererCalendrier(): void {
-    this.semaines = [];
-  
-    const premierJourMois = this.mois.clone().startOf('month');
-    const dernierJourMois = this.mois.clone().endOf('month');
-
-    let semaineCourante = [];
-    let dateCourante = premierJourMois.clone().startOf('week').add(1, 'day'); // Commencer par le lundi
-  
-    while (dateCourante.isBefore(dernierJourMois, 'day') || dateCourante.isSame(dernierJourMois, 'day')) {
-      semaineCourante.push(dateCourante.clone());
-  
-      if (dateCourante.day() === 0) { // Dimanche
-        this.semaines.push(semaineCourante);
-        semaineCourante = [];
+  absences : Array<Absence> = new Array<Absence>;
+  highlightedDays : Map<moment.Moment,string> = new Map<moment.Moment,string>;
+  dateClass : MatCalendarCellClassFunction<moment.Moment> = (cellDate, view) => {
+    if(view == "month"){
+      if(cellDate.day()==0 || cellDate.day()==6)
+        return 'cellHighlight-weekend';
+       
+        
+      const possibleHighlightedDay : HighlightedDay= {
+        moment : cellDate,
+        type : ""
       }
-  
-      dateCourante.add(1, 'day');
+        return 'cellHighlight-conge-perso';
     }
+    return 'cellHighlight-basic';
+  };
 
-    // Ajouter la dernière semaine
-    if (semaineCourante.length > 0) {
-      this.semaines.push(semaineCourante);
-    }
+  constructor(private adapter : DateAdapter<any>, private employeeService : EmployeeService){
+    this.adapter.setLocale(moment.locale('fr'));
+    this.employeeService.getAbsences().pipe(
+      tap((absences:Array<Absence>)=> {
+        this.absences = absences;
+        this.highlightedDays = this.daysToHiglight(absences);
+      })
+    ).subscribe();
   }
 
-  moisPrecedent(): void {
-    this.mois.subtract(1, 'month');
-    this.joursSemaineLabels = this.getJoursSemaineLabels();
-    this.genererCalendrier();
-  }
+  private daysToHiglight(absences : Array<Absence>):Map<moment.Moment,string>{
+    let highlightedDays = new Map<moment.Moment,string>();
+    console.log(absences);
+    absences.forEach(absence => {
+      /*if(absence.Stat)*/
+      let dateStart = moment(absence.dateStart);
+      let dateEnd = moment(absence.dateEnd);
+      let int = dateStart.diff(dateEnd, 'days', true)+1
+      console.log(int);
+    });
 
-  moisSuivant(): void {
-    this.mois.add(1, 'month');
-    this.joursSemaineLabels = this.getJoursSemaineLabels();
-    this.genererCalendrier();
+
+    return new Map<moment.Moment,string>;
   }
 }

@@ -16,7 +16,6 @@ export class HeaderComponent {
     userInfosService.userInfos$.pipe(
       map(userInfo => this.userInfos = userInfo)
     ).subscribe(res => {
-      console.log(res);
       if(res.email!=""){
         router.navigateByUrl("calendar");
       }

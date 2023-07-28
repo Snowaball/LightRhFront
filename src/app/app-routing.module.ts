@@ -19,7 +19,7 @@ const routes: Routes = [
 
 
   //Routes pour la gestion de soi même
-  //Manque visualisation de mes congés 
+  { path : 'absences_view', component : CalendrierComponent, canActivate : [isAuthGuard] },
   // --liste par ordre chrono jours de congés + rtt employeur + jours fériés + 
   //manque modifier une demande 
   //manque supprimer une demande

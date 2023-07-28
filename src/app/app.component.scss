@@ -9,9 +9,13 @@
         align-content: center;
         flex-direction: column;
         text-align: center;
+        border-radius: 5px;
     }
     &__ruler{
         color: gray;  
         width: 70%; 
+    }
+    &__component-title{
+        margin: 1rem;
     }
 }

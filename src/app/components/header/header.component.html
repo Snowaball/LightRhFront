@@ -2,11 +2,11 @@
     <span>LightRh</span>
     <span class="toolbar__middle-spacer"></span>
     <span *ngIf="userInfos?.email !=''" class="toolbar__menu-container">
-        <button mat-button (click)='redirectTo("calendar")'>Acceuil</button>
+        <button mat-button (click)='redirectTo("calendar")'>Accueil</button>
         <button mat-button [matMenuTriggerFor]="absences">Absences</button>
         <mat-menu #absences="matMenu">
-            <button mat-menu-item>Voir mes absences</button>
-            <button mat-menu-item (click)='redirectTo("creation_absence")'>Demander une absence</button>
+            <button mat-menu-item (click)='redirectTo("absences_view")'>Voir mes absences</button>
+            <button mat-menu-item >Demander une absence</button>
         </mat-menu>
         <button mat-button [matMenuTriggerFor]="manager" *ngIf='userInfos?.profile=="MANAGER"'>Manager</button>
         <mat-menu #manager="matMenu">

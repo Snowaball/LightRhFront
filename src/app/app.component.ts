@@ -21,6 +21,7 @@ export class AppComponent {
   getComponentTitle(url : string) : string{
     switch(url){
       case("/calendar") : return "Calendrier";
+      case("/absences_view") : return "Liste de mes absences";
       default : return "Connexion";
     }
   }
