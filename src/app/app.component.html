@@ -1,5 +1,8 @@
 <app-header></app-header>
-<div>
-    <div></div>
-    <router-outlet></router-outlet>
+<div class="main-container">    
+    <div class="main-container__component-container">
+        <h1>{{currentComponent}}</h1>
+        <hr class="main-container__ruler">
+        <router-outlet></router-outlet>
+    </div>
 </div>
