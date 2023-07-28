@@ -5,6 +5,8 @@ import { ConnexionComponent } from './components/connexion/connexion.component';
 import { PasswordResetComponent } from './components/password-reset/password-reset.component';
 import { CalendrierComponent } from './components/calendrier/calendrier.component';
 import { isAuthGuard } from './services/guards/is-auth.guard';
+import { CreationCompteComponent } from './components/creation-compte/creation-compte.component';
+import { isAdminGuard } from './services/guards/is-admin.guard';
 
 const routes: Routes = [
   //routes relatives au login
@@ -29,6 +31,9 @@ const routes: Routes = [
   //Routes pour les managers
   //Manque visualisation de mon département en vue par jour
   //Manque histogramme de mon département en vue par jour
+
+  //Route pour les admins
+  { path: 'create_employee', component: CreationCompteComponent, canActivate : [isAdminGuard] },
 
 
 ];

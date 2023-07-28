@@ -16,7 +16,7 @@
         </mat-menu>
         <button mat-button [matMenuTriggerFor]="admin" *ngIf='userInfos?.role=="ADMIN"'>Admin</button>
         <mat-menu #admin="matMenu">
-            <button mat-menu-item (click)='redirectTo("creation_absence")'>Créer un employé</button>
+            <button mat-menu-item (click)='redirectTo("create_employee")'>Créer un employé</button>
             <button mat-menu-item>Administrer les RTT employeur</button>
             <button mat-menu-item>Administrer les jours fériés</button>
         </mat-menu>
