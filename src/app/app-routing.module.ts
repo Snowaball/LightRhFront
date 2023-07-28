@@ -29,8 +29,7 @@ const routes: Routes = [
   //Routes pour les managers
   //Manque visualisation de mon département en vue par jour
   //Manque histogramme de mon département en vue par jour
-  //Routes pour les admins
-  //Manque 
+
 
 ];
 
