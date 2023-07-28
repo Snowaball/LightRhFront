@@ -1,9 +1,13 @@
 <div class="calendrier">
   <div class="entete">
+    <select [ngModel]="selectedYear || ''" (ngModelChange)="onChangeYear($event)">
+      <option *ngFor="let year of years" [value]="year">{{year}}</option>
+  </select>  
     <button (click)="moisPrecedent()">Mois précédent</button>
     <h2>{{ mois.format('MMMM YYYY') }}</h2>
     <button (click)="moisSuivant()">Mois suivant</button>
-  </div>
+</div>
+
   <div class="semaines">
 
     <div class="container">

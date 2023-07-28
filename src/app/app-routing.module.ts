@@ -8,6 +8,7 @@ import { isAuthGuard } from './services/guards/is-auth.guard';
 import { CreationCompteComponent } from './components/creation-compte/creation-compte.component';
 import { isAdminGuard } from './services/guards/is-admin.guard';
 
+
 const routes: Routes = [
   //routes relatives au login
   { path: '', component: ConnexionComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   
   //route d'accueil quand connecté 
   { path : 'calendar', component : CalendrierComponent, canActivate : [isAuthGuard] },
+  { path : 'see_absence', component : CalendrierComponent, canActivate : [isAuthGuard] },
   //manque la visualisation des jours si congé / rtt / rtt employeur / jour férié avec couleur diff entre demande perso et congé imposé
   //manque l'affichage des compteurs congés payés + rtt
   //manque changer d'année 

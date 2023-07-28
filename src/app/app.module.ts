@@ -20,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AbsenceService } from './services/absence.service';
 import { PasswordResetComponent } from './components/password-reset/password-reset.component';
 import {MatMenuModule} from '@angular/material/menu';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,8 @@ import {MatMenuModule} from '@angular/material/menu';
     HistogrammeComponent,
     CreationCompteComponent,
     HeaderComponent,
-    PasswordResetComponent,   
+    PasswordResetComponent,
+
   ],
   imports: [
     BrowserModule,

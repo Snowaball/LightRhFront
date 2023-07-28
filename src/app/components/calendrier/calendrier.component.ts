@@ -10,21 +10,45 @@ export class CalendrierComponent {
   mois: moment.Moment;
   semaines: moment.Moment[][] = [];
   joursSemaineLabels: string[] = [];
+  years: number[] = [];
+  selectedYear: number;
+  
+
 
   constructor() {
     this.mois = moment();
     this.joursSemaineLabels = this.getJoursSemaineLabels();
     this.genererCalendrier();
+    this.years = this.generateYearsList();
+    this.selectedYear = this.mois.year();
   }
+  
+  
+
+  
+
 
   getJoursSemaineLabels(): string[] {
-    // Utilisez un tableau pour définir l'ordre souhaité des jours de la semaine
+
     const ordreJoursSemaine = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
-    const joursLabels = moment.weekdaysMin(); // Utilise les libellés courts des jours de la semaine (Lun, Mar, Mer, ...)
-    const premierJourSemaineIndex = moment().startOf('week').day(); // Index du premier jour de la semaine (0 pour Dimanche, 1 pour Lundi, ...)
-    const joursAvantPremierJourSemaine = joursLabels.splice(0, premierJourSemaineIndex); // Retirer les jours avant le premier jour de la semaine
+    const joursLabels = moment.weekdaysMin();
+    const premierJourSemaineIndex = moment().startOf('week').day();
+    const joursAvantPremierJourSemaine = joursLabels.splice(0, premierJourSemaineIndex);
     return ordreJoursSemaine;
   }
+
+  generateYearsList(): number[] {
+    const currentYear = moment().year();
+    return Array.from({length: 11}, (_, i) => currentYear - 5 + i);
+}
+
+
+onChangeYear(newYear: number): void {
+  this.mois.set('year', newYear);
+  this.genererCalendrier();
+}
+
+
 
   genererCalendrier(): void {
     this.semaines = [];

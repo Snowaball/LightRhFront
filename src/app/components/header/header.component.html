@@ -5,7 +5,7 @@
         <button mat-button (click)='redirectTo("calendar")'>Acceuil</button>
         <button mat-button [matMenuTriggerFor]="absences">Absences</button>
         <mat-menu #absences="matMenu">
-            <button mat-menu-item>Voir mes absences</button>
+            <button mat-menu-item (click)='redirectTo("see_absence")'>Voir mes absences</button>
             <button mat-menu-item (click)='redirectTo("creation_absence")'>Demander une absence</button>
         </mat-menu>
         <button mat-button [matMenuTriggerFor]="manager" *ngIf='userInfos?.profile=="MANAGER"'>Manager</button>
