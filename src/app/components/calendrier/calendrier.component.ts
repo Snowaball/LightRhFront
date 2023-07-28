@@ -55,6 +55,9 @@ export class CalendrierComponent {
   }
 
   private daysToHiglight(absences : Array<Absence>):Array<HighlightedDay>{
+    if(absences.length==0){
+      return new Array<HighlightedDay>();
+    }
     let highlightedDays = new Array<HighlightedDay>();
     absences.forEach(absence => {
       if(absence.status == "VALIDEE"){
