@@ -19,6 +19,6 @@ export class ConnexionComponent {
   }
 
   submitForm(){
-    this.userInfosService.getToken(this.connexionForm)
+    this.userInfosService.getToken(this.connexionForm).subscribe();
   }
 }

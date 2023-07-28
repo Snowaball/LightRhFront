@@ -19,6 +19,7 @@ import {MatInputModule} from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
 import { AbsenceService } from './services/absence.service';
 import { PasswordResetComponent } from './components/password-reset/password-reset.component';
+import {MatMenuModule} from '@angular/material/menu';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +45,8 @@ import { PasswordResetComponent } from './components/password-reset/password-res
     FormsModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatMenuModule
   ],
   providers: [
     AbsenceService,

@@ -1,7 +1,7 @@
-// creation-absence.component.ts
 import { Component } from '@angular/core';
-import { AbsenceCreateDto } from '../../models/absenceCreateDto';
+import { AbsenceCreateDto } from 'src/app/models/absenceCreateDto';
 import { AbsenceService } from 'src/app/services/absence.service';
+import { UserInfosService } from 'src/app/services/user-infos.service';
 
 @Component({
   selector: 'app-creation-absence',
@@ -12,24 +12,16 @@ export class CreationAbsenceComponent {
   absenceInitial: AbsenceCreateDto={
     dateEnd: new Date(),
     dateStart: new Date(),
-    motif: "blabla",
+    motif: "",
     type: "EMPLOYEE_RTT",
-    label: "bla",
-    email: "m.balouzet1@gmail.com"
+    label: "Congé",
+    email: this.userInfoService.userInfos.email
   };
   absence: AbsenceCreateDto= this.absenceInitial;
 
-  constructor(private absenceService: AbsenceService) {}
+  constructor(private absenceService: AbsenceService, private userInfoService : UserInfosService) {}
 
   onSubmitForm() {
-    this.absenceService.addAbsence(this.absence).subscribe(
-      () => {
-        console.log('Absence ajoutée avec succès.');
-        this.absence = this.absenceInitial;
-      },
-      (error) => {
-        console.error('Erreur lors de l\'ajout de l\'absence :', error);
-      }
-    );
+    this.absenceService.addAbsence(this.absence).subscribe();
   }
 }

@@ -4,5 +4,5 @@ export interface UserInfo {
     email : String,
     role : String,
     profile : String,  
-    expirationDate : Date  
+    expirationDate : number
 }
