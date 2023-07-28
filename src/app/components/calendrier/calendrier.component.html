@@ -1,28 +1,4 @@
-<div class="calendrier">
-  <div class="entete">
-    <button (click)="moisPrecedent()">Mois précédent</button>
-    <h2>{{ mois.format('MMMM YYYY') }}</h2>
-    <button (click)="moisSuivant()">Mois suivant</button>
-  </div>
-  <div class="semaines">
-
-    <div class="container">
-      <div class="jour-semaine" *ngFor="let libelleJour of joursSemaineLabels">
-        {{ libelleJour }}
-      </div>
-    </div>
-
-    <div *ngFor="let semaine of semaines" class="semaine">
-      <div *ngFor="let jour of semaine" class="jour">
-        <ng-container *ngIf="jour">
-          <button class="jour-mois" *ngIf="jour.isSame(mois, 'month')">
-            {{ jour.date() }}
-          </button>
-          <span class="jour-autre-mois" *ngIf="!jour.isSame(mois, 'month')">
-            {{ jour.date() }}
-          </span>
-        </ng-container>
-      </div>
-    </div>
-  </div>
-</div>
+<mat-card class="calendar-wrapper">
+  <mat-calendar #calendar [dateClass]="dateClass">
+  </mat-calendar>
+</mat-card>

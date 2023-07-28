@@ -16,10 +16,16 @@ import { HeaderComponent } from './components/header/header.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AbsenceService } from './services/absence.service';
 import { PasswordResetComponent } from './components/password-reset/password-reset.component';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatCardModule} from '@angular/material/card';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { ErrorHttpInterceptor } from './shared/interceptors/error-http-interceptor';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +37,7 @@ import {MatMenuModule} from '@angular/material/menu';
     HistogrammeComponent,
     CreationCompteComponent,
     HeaderComponent,
-    PasswordResetComponent,   
+    PasswordResetComponent,  
   ],
   imports: [
     BrowserModule,
@@ -46,10 +52,14 @@ import {MatMenuModule} from '@angular/material/menu';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    MatMenuModule
+    MatMenuModule,
+    MatDatepickerModule,
+    MatCardModule,
+    MatMomentDateModule
   ],
   providers: [
     AbsenceService,
+    { provide : HTTP_INTERCEPTORS, useClass : ErrorHttpInterceptor, multi : true}
   ],
   bootstrap : [AppComponent]
 })
